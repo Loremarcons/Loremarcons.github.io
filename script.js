@@ -1,15 +1,22 @@
-// File: script.js
+// script.js aggiornato
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
+function onScroll() {
   let current = "";
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 70;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
+    const top = section.offsetTop - 100;
+    const height = section.clientHeight;
+
+    // Active link in navbar
+    if (pageYOffset >= top && pageYOffset < top + height) {
+      current = section.id;
+    }
+
+    // Show animation
+    if (pageYOffset + window.innerHeight > top + 100) {
+      section.classList.add("visible");
     }
   });
 
@@ -19,4 +26,7 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
-});
+}
+
+window.addEventListener("scroll", onScroll);
+document.addEventListener("DOMContentLoaded", onScroll);
