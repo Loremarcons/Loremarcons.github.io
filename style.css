@@ -6,17 +6,24 @@
   --giallo: #F49F0A;
 }
 
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--grigio);
   color: var(--marrone);
-  scroll-behavior: smooth;
+  padding-top: 120px;
 }
 
 header {
   background: var(--rosso);
   color: white;
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
@@ -24,7 +31,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
   text-align: left;
 }
@@ -40,9 +47,15 @@ header {
   align-items: flex-start;
 }
 
+/* Navbar */
 nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: var(--verde);
+  z-index: 1000;
   padding: 0.5rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 nav ul {
@@ -61,46 +74,71 @@ nav a {
   text-decoration: none;
   padding: 0.75rem 1rem;
   transition: background 0.3s;
-}
-
-nav a:hover, nav a.active {
-  background: var(--giallo);
-  color: var(--marrone);
   border-radius: 8px;
 }
 
-main section {
+nav a:hover,
+nav a.active {
+  background: var(--giallo);
+  color: var(--marrone);
+}
+
+/* Sezioni */
+.card {
   background: white;
   margin: 2rem auto;
   max-width: 800px;
   padding: 2rem;
   border-radius: 16px;
-  border: 2px solid var(--giallo);
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  border: 5px solid var(--giallo);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   opacity: 0;
   transform: translateY(30px);
   transition:
     opacity 0.8s ease-out,
     transform 0.8s ease-out,
-    box-shadow 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-main section.visible {
+.card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-main section:hover {
+.card:hover {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   transform: scale(1.03);
   z-index: 10;
   position: relative;
 }
 
+/* Footer */
 footer {
   background: var(--marrone);
   color: white;
   text-align: center;
   padding: 1rem;
+  margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-titolo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo-titolo > div {
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 0.5rem 0;
+  }
 }
