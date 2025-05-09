@@ -1,11 +1,11 @@
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll(".card");
 const navLinks = document.querySelectorAll("nav a");
 
 function onScroll() {
   let current = "";
 
   sections.forEach((section) => {
-    const top = section.offsetTop - 120;
+    const top = section.offsetTop - 130;
     const height = section.clientHeight;
 
     if (pageYOffset >= top && pageYOffset < top + height) {
@@ -25,7 +25,7 @@ function onScroll() {
   });
 }
 
-// Smooth scroll fix on nav click
+// Scroll fluido al click
 navLinks.forEach(link => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
