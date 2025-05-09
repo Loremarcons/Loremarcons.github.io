@@ -1,39 +1,18 @@
-:root {
-  --verde: #226F54;
-  --rosso: #A51C30;
-  --grigio: #E6E8E6;
-  --marrone: #1C110A;
-  --giallo: #F49F0A;
-}
-
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--grigio);
-  color: var(--marrone);
-  padding-top: 120px;
-}
-
+/* Header sempre in cima */
 header {
   background: var(--rosso);
   color: white;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   text-align: center;
 }
 
+/* Logo + nome centrati */
 .logo-titolo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  text-align: left;
 }
 
 .logo-titolo img {
@@ -47,14 +26,12 @@ header {
   align-items: flex-start;
 }
 
-/* Navbar */
+/* NAVBAR sticky, sotto header */
 nav {
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
   background: var(--verde);
-  z-index: 1000;
-  padding: 0.5rem 0;
+  z-index: 999;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -63,18 +40,19 @@ nav ul {
   justify-content: center;
   list-style: none;
   flex-wrap: wrap;
+  padding: 0.5rem;
 }
 
 nav li {
-  margin: 0 1rem;
+  margin: 0.5rem;
 }
 
 nav a {
   color: white;
   text-decoration: none;
   padding: 0.75rem 1rem;
-  transition: background 0.3s;
   border-radius: 8px;
+  transition: background 0.3s;
 }
 
 nav a:hover,
@@ -83,7 +61,7 @@ nav a.active {
   color: var(--marrone);
 }
 
-/* Sezioni */
+/* Sezioni e contenitori */
 .card {
   background: white;
   margin: 2rem auto;
@@ -113,7 +91,6 @@ nav a.active {
   position: relative;
 }
 
-/* Footer */
 footer {
   background: var(--marrone);
   color: white;
@@ -122,7 +99,7 @@ footer {
   margin-top: 4rem;
 }
 
-/* Responsive */
+/* Responsive fix */
 @media (max-width: 768px) {
   .logo-titolo {
     flex-direction: column;
@@ -134,11 +111,20 @@ footer {
   }
 
   nav ul {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0.5rem;
   }
 
   nav li {
-    margin: 0.5rem 0;
+    flex: 0 0 auto;
+    margin-right: 0.5rem;
   }
+
+  nav a {
+    white-space: nowrap;
+  }
+}
+
 }
