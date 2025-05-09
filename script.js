@@ -1,4 +1,3 @@
-// script.js aggiornato
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
@@ -6,15 +5,13 @@ function onScroll() {
   let current = "";
 
   sections.forEach((section) => {
-    const top = section.offsetTop - 100;
+    const top = section.offsetTop - 120;
     const height = section.clientHeight;
 
-    // Active link in navbar
     if (pageYOffset >= top && pageYOffset < top + height) {
       current = section.id;
     }
 
-    // Show animation
     if (pageYOffset + window.innerHeight > top + 100) {
       section.classList.add("visible");
     }
@@ -27,6 +24,15 @@ function onScroll() {
     }
   });
 }
+
+// Smooth scroll fix on nav click
+navLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
 
 window.addEventListener("scroll", onScroll);
 document.addEventListener("DOMContentLoaded", onScroll);
