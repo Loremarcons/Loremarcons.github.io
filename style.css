@@ -10,33 +10,55 @@ body {
   font-family: 'Poppins', sans-serif;
   background: var(--grigio);
   color: var(--marrone);
-  padding-top: 60px;
+  scroll-behavior: smooth;
+}
+
+header {
+  background: var(--rosso);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo-titolo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logo-titolo img {
+  height: 80px;
+  width: auto;
 }
 
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
   background: var(--verde);
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  padding: 0.5rem 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0 1rem;
 }
 
 nav a {
   color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
   transition: background 0.3s;
 }
 
 nav a:hover, nav a.active {
   background: var(--giallo);
   color: var(--marrone);
-}
-
-header {
-  background: var(--rosso);
-  color: white;
-  text-align: center;
-  padding: 4rem 2rem;
+  border-radius: 8px;
 }
 
 main section {
@@ -45,10 +67,11 @@ main section {
   max-width: 800px;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border: 2px solid var(--giallo);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease-in-out;
 }
 
 main section.visible {
@@ -56,16 +79,13 @@ main section.visible {
   transform: translateY(0);
 }
 
+main section:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
 footer {
   background: var(--marrone);
   color: white;
   text-align: center;
   padding: 1rem;
-}
-
-/* Responsive nav */
-@media (max-width: 768px) {
-  nav ul {
-    flex-wrap: wrap;
-  }
 }
