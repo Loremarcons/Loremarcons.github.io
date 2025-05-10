@@ -1,4 +1,26 @@
-/* Header sempre in cima */
+:root {
+  --verde: #226F54;
+  --rosso: #A51C30;
+  --grigio: #E6E8E6;
+  --marrone: #1C110A;
+  --giallo: #F49F0A;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--grigio);
+  color: var(--marrone);
+  padding: 0;
+}
+
+/* HEADER */
 header {
   background: var(--rosso);
   color: white;
@@ -6,13 +28,13 @@ header {
   text-align: center;
 }
 
-/* Logo + nome centrati */
 .logo-titolo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  text-align: left;
 }
 
 .logo-titolo img {
@@ -26,7 +48,7 @@ header {
   align-items: flex-start;
 }
 
-/* NAVBAR sticky, sotto header */
+/* NAVBAR: sticky */
 nav {
   position: sticky;
   top: 0;
@@ -61,7 +83,7 @@ nav a.active {
   color: var(--marrone);
 }
 
-/* Sezioni e contenitori */
+/* SEZIONI */
 .card {
   background: white;
   margin: 2rem auto;
@@ -91,6 +113,7 @@ nav a.active {
   position: relative;
 }
 
+/* FOOTER */
 footer {
   background: var(--marrone);
   color: white;
@@ -99,7 +122,7 @@ footer {
   margin-top: 4rem;
 }
 
-/* Responsive fix */
+/* MOBILE */
 @media (max-width: 768px) {
   .logo-titolo {
     flex-direction: column;
@@ -125,6 +148,4 @@ footer {
   nav a {
     white-space: nowrap;
   }
-}
-
 }
