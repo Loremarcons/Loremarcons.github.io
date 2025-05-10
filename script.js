@@ -3,18 +3,40 @@ const navLinks = document.querySelectorAll("nav a");
 const nav = document.querySelector("nav");
 const floatingBtn = document.getElementById("floating-menu-btn");
 
-let lastScrollY = window.scrollY;
+let lastExpanded = null;
 
-// Scroll + attiva link + mostra btn
+// Collapse all
+function collapseAll() {
+  sections.forEach(s => {
+    s.classList.add("collapsed");
+    s.classList.remove("expanded");
+  });
+}
+
+// Expand target
+function expandSection(section) {
+  collapseAll();
+  section.classList.remove("collapsed");
+  section.classList.add("expanded");
+  lastExpanded = section;
+}
+
+// On scroll
 window.addEventListener("scroll", () => {
-  let activeId = null;
-  const navOut = nav.getBoundingClientRect().bottom < 0;
+  const scrollTop = window.scrollY;
 
+  // Floating button logic
+  if (scrollTop > 150) {
+    floatingBtn.style.display = "block";
+  } else {
+    floatingBtn.style.display = "none";
+  }
+
+  // Sezione visibile = attiva
+  let activeId = null;
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
-    const mid = window.innerHeight / 2;
-
-    if (rect.top < mid && rect.bottom > mid) {
+    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
       activeId = section.id;
     }
 
@@ -26,30 +48,28 @@ window.addEventListener("scroll", () => {
   navLinks.forEach(link => {
     link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
   });
-
-  floatingBtn.style.display = navOut ? "block" : "none";
 });
 
-// Click menu link: scroll + espandi
+// Menu click = scroll + espandi sezione
 navLinks.forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute("href"));
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    sections.forEach(s => s.classList.remove("expanded"));
-    target.classList.add("expanded");
+    expandSection(target);
   });
 });
 
-// Click sezione = toggle expand
+// Sezione click = toggle espansione
 sections.forEach(section => {
   section.addEventListener("click", () => {
-    section.classList.toggle("expanded");
+    if (!section.classList.contains("expanded")) {
+      expandSection(section);
+    }
   });
 });
 
-// Floating menu = torna a nav
+// Floating button = scrolla su nav
 floatingBtn.addEventListener("click", () => {
   nav.scrollIntoView({ behavior: "smooth" });
 });
