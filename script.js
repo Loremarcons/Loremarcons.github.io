@@ -1,5 +1,24 @@
 const sections = document.querySelectorAll(".card");
 const navLinks = document.querySelectorAll("nav a");
+const menuToggle = document.getElementById("menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
+
+navLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Chiudi menu mobile
+    if (window.innerWidth <= 768) {
+      nav.classList.remove("open");
+    }
+  });
+});
 
 function onScroll() {
   let current = "";
@@ -24,15 +43,6 @@ function onScroll() {
     }
   });
 }
-
-// Scroll fluido al click
-navLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
 
 window.addEventListener("scroll", onScroll);
 document.addEventListener("DOMContentLoaded", onScroll);
