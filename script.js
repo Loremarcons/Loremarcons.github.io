@@ -3,15 +3,18 @@ const navLinks = document.querySelectorAll("nav a");
 const nav = document.querySelector("nav");
 const floatingBtn = document.getElementById("floating-menu-btn");
 
-// Scroll + attiva link + visibilità
+let lastScrollY = window.scrollY;
+
+// Scroll + attiva link + mostra btn
 window.addEventListener("scroll", () => {
   let activeId = null;
-  let menuOut = nav.getBoundingClientRect().bottom < 0;
+  const navOut = nav.getBoundingClientRect().bottom < 0;
 
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
+    const mid = window.innerHeight / 2;
 
-    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+    if (rect.top < mid && rect.bottom > mid) {
       activeId = section.id;
     }
 
@@ -24,25 +27,29 @@ window.addEventListener("scroll", () => {
     link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
   });
 
-  floatingBtn.style.display = menuOut ? "block" : "none";
+  floatingBtn.style.display = navOut ? "block" : "none";
 });
 
-// Scroll + espansione sezione
+// Click menu link: scroll + espandi
 navLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
+  link.addEventListener("click", e => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
+    const target = document.querySelector(link.getAttribute("href"));
     target.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    sections.forEach(sec => sec.classList.remove("expanded"));
+    sections.forEach(s => s.classList.remove("expanded"));
     target.classList.add("expanded");
-
-    navLinks.forEach(link => link.classList.remove("active"));
-    this.classList.add("active");
   });
 });
 
-// Menu toggle
+// Click sezione = toggle expand
+sections.forEach(section => {
+  section.addEventListener("click", () => {
+    section.classList.toggle("expanded");
+  });
+});
+
+// Floating menu = torna a nav
 floatingBtn.addEventListener("click", () => {
   nav.scrollIntoView({ behavior: "smooth" });
 });
