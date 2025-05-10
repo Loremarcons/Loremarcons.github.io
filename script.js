@@ -72,4 +72,12 @@ sections.forEach(section => {
 // Floating button = scrolla su nav
 floatingBtn.addEventListener("click", () => {
   nav.scrollIntoView({ behavior: "smooth" });
+
+    // Toggle menu visibility
+let isMenuVisible = true;
+
+floatingBtn.addEventListener("click", () => {
+  isMenuVisible = !isMenuVisible;
+  nav.style.display = isMenuVisible ? "block" : "none";
+});
 });
