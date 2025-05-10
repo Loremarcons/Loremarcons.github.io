@@ -148,4 +148,17 @@ footer {
   nav a {
     white-space: nowrap;
   }
+  /* Pulsante hamburger */
+#menu-toggle {
+  display: none;
+  background: var(--verde);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+ }
 }
