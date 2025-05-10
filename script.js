@@ -1,48 +1,61 @@
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-// Observer per visibilità e attivazione animazioni
-const observerOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.5 // almeno metà della sezione visibile
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const id = entry.target.getAttribute("id");
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-
-      navLinks.forEach(link => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-      });
-    }
-  });
-}, observerOptions);
-
-// Attiva l’observer per tutte le sezioni
-sections.forEach(section => {
-  observer.observe(section);
-});
-
-// Scroll centrato su click
+// Scroll su click: centrato
 navLinks.forEach(link => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
-    const targetId = this.getAttribute("href").replace("#", "");
-    const target = document.getElementById(targetId);
+    const target = document.querySelector(this.getAttribute("href"));
     target.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // Chiudi hamburger se attivo
+    // Chiudi hamburger se aperto
     if (window.innerWidth <= 768) {
       document.querySelector("nav").classList.remove("open");
     }
   });
 });
 
-// Hamburger toggle
+// Sezione più centrata = attiva
+function updateActiveSection() {
+  let minDistance = Infinity;
+  let activeId = null;
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      activeId = section.id;
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+  });
+}
+
+// Animazione visibilità al volo
+function handleAnimations() {
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      section.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", () => {
+  updateActiveSection();
+  handleAnimations();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateActiveSection();
+  handleAnimations();
+});
+
+// Hamburger
 document.getElementById("menu-toggle")?.addEventListener("click", () => {
   document.querySelector("nav").classList.toggle("open");
 });
