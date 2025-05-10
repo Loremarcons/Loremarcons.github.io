@@ -1,65 +1,48 @@
-const sections = document.querySelectorAll(".card");
+const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
-const menuToggle = document.getElementById("menu-toggle");
-const nav = document.querySelector("nav");
 
-let manualScrollTarget = null;
+// Observer per visibilità e attivazione animazioni
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.5 // almeno metà della sezione visibile
+};
 
-menuToggle?.addEventListener("click", () => {
-  nav.classList.toggle("open");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute("id");
+
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+      });
+    }
+  });
+}, observerOptions);
+
+// Attiva l’observer per tutte le sezioni
+sections.forEach(section => {
+  observer.observe(section);
 });
 
+// Scroll centrato su click
 navLinks.forEach(link => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
     const targetId = this.getAttribute("href").replace("#", "");
     const target = document.getElementById(targetId);
-    manualScrollTarget = targetId;
-
-    // Scroll centrato
     target.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // Chiudi menu mobile
+    // Chiudi hamburger se attivo
     if (window.innerWidth <= 768) {
-      nav.classList.remove("open");
+      document.querySelector("nav").classList.remove("open");
     }
-
-    // Imposta attivo temporaneo
-    navLinks.forEach(link => link.classList.remove("active"));
-    this.classList.add("active");
-
-    // Dopo scroll, reset
-    setTimeout(() => {
-      manualScrollTarget = null;
-    }, 1000); // 1 sec per scroll completato
   });
 });
 
-function onScroll() {
-  if (manualScrollTarget) return; // Evita conflitto scroll-click
-
-  let current = "";
-
-  sections.forEach((section) => {
-    const top = section.offsetTop - 160; // tolleranza per sticky nav
-    const height = section.clientHeight;
-
-    if (window.scrollY >= top && window.scrollY < top + height) {
-      current = section.id;
-    }
-
-    if (window.scrollY + window.innerHeight > top + 100) {
-      section.classList.add("visible");
-    }
-  });
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", onScroll);
-document.addEventListener("DOMContentLoaded", onScroll);
+// Hamburger toggle
+document.getElementById("menu-toggle")?.addEventListener("click", () => {
+  document.querySelector("nav").classList.toggle("open");
+});
