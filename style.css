@@ -14,7 +14,6 @@ body {
   padding: 0;
 }
 
-/* Header */
 header {
   background: var(--rosso);
   color: white;
@@ -24,8 +23,8 @@ header {
 
 .logo-titolo {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -34,32 +33,19 @@ header {
   height: 90px;
 }
 
-.logo-titolo > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Navbar */
+/* Nav menu */
 nav {
   background: var(--verde);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-nav.hidden {
-  transform: translateY(-100%);
+  padding: 0.5rem;
 }
 
 nav ul {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   list-style: none;
-  padding: 0.5rem;
   margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
 
 nav li {
@@ -80,28 +66,50 @@ nav a.active {
   color: var(--marrone);
 }
 
+/* Floating + */
+#floating-menu-btn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  background: var(--giallo);
+  color: var(--marrone);
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  line-height: 48px;
+  z-index: 999;
+  cursor: pointer;
+}
+
 /* Sezioni */
 .card {
   max-width: 800px;
   margin: 2rem auto;
-  padding: 2rem;
   background: white;
   border-radius: 16px;
   border: 5px solid var(--giallo);
+  padding: 2rem;
   box-shadow: 0 0 0 rgba(0,0,0,0);
-  transition: all 0.4s ease;
   opacity: 0.5;
+  transition: all 0.3s ease;
   overflow: hidden;
-  height: auto;
 }
 
 .card.collapsed {
   height: 80px;
-  opacity: 0.5;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+.card.collapsed *:not(h2) {
+  display: none;
 }
 
 .card.expanded {
@@ -109,40 +117,10 @@ nav a.active {
   cursor: auto;
 }
 
-.card.visible {
-  opacity: 1;
-}
-
 .card:hover {
   box-shadow: 0 12px 32px rgba(0,0,0,0.25);
 }
 
-.card.collapsed *:not(h2) {
-  display: none;
-}
-
-.card h2 {
-  margin: 0;
-}
-
-/* Floating menu */
-#floating-menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px; /* Dimensione del bottone */
-  height: 50px; /* Dimensione del bottone */
-  border-radius: 50%; /* Forma circolare */
-  background-color: #000; /* Colore di sfondo */
-  color: #fff; /* Colore del simbolo "+" */
-  font-size: 24px; /* Dimensione del simbolo "+" */
-  position: fixed;
-  bottom: 20px; /* Posizione dal basso */
-  right: 20px; /* Posizione da destra */
-  cursor: pointer;
-}
-
-/* Certificazioni logo */
 .cert-logo {
   display: block;
   max-width: 200px;
@@ -165,10 +143,10 @@ footer {
 
   nav ul {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   nav li {
-    margin-left: 1rem;
+    margin: 0.3rem 0;
   }
 }
