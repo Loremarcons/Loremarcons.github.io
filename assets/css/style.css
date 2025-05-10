@@ -1,8 +1,10 @@
 :root {
   --rosso: #eb1718;
+  --rosso-scuro: rgb(147, 0, 0);
   --giallo: #ffe000;
   --marrone: #1C110A;
   --bianco: #ffffff;
+  --bianco-sfondo: #bbbbbb;
   --overlay: rgba(0, 0, 0, 0.5);
 }
 
@@ -16,8 +18,8 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--bianco);
-  color: white;
+  background: var(--bianco-sfondo);
+  color: rgb(0, 0, 0);
 }
 
 .logo-title {
@@ -52,7 +54,7 @@ body {
   position: relative; /* Mantiene il logo indipendente dal flusso del testo */
 }
 
-.hero {
+.Home {
   position: relative;
   height: 100vh;
   background: url('../images/Sfondo-Home.jpg') no-repeat center center/cover;
@@ -60,17 +62,33 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  transform-origin: top; /* Aggiunto per garantire la compressione */
+   transform: scale(0.8); /* Ridotto inizialmente */
+    opacity: 0; /* Inizialmente invisibile */
+  transition: transform 0.2s ease, opacity 0.2s ease; /* Transizione coerente */
+    &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay); /* Usa la variabile overlay */
+    z-index: 1; /* Posiziona sotto il contenuto */
+}
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--overlay);
-  z-index: 1;
+.Home.visible {
+  transform: scaleY(1); /* Espande la Home */
+  opacity: 1;
 }
 
-.hero-content {
+.Home.closing {
+  transform: scaleY(0); /* Comprime la Home */
+  opacity: 0;
+}
+
+.Home-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
@@ -78,18 +96,159 @@ body {
   margin-top: 400px; /* Offset verso il basso */
 }
 
-.hero h1 {
+.Home h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: var(--giallo);
+  animation: fadeInZoom 1.5s ease forwards; /* Applica l'animazione */
 }
 
-.hero-content p {
+.Home-content p {
   font-family: 'Coiny', sans-serif; /* Usa il font Coiny */
   font-size: 1.5rem; /* Regola la dimensione del testo */
   color: white; /* Colore del testo */
   text-align: center; /* Centra il testo */
   margin-top: 25px; /* Rimuove margini extra */
+  animation: slideInUp 1.5s ease forwards; /* Applica l'animazione */
+}
+
+/* Layout a due colonne per la sezione "Il nostro campo" */
+.campo-container {
+  display: flex;
+  flex-wrap: wrap; /* Permette il wrapping su dispositivi più piccoli */
+  gap: 2rem; /* Spaziatura tra le colonne */
+  justify-content: center; /* Centra le colonne orizzontalmente */
+  align-items: stretch; /* Allinea le colonne in alto */
+  text-align: center; /* Centra il testo in entrambe le colonne */
+  padding: 2rem; /* Spaziatura interna */
+}
+
+.campo-colonna {
+  flex: 1; /* Ogni colonna occupa lo stesso spazio */
+  min-width: 300px; /* Larghezza minima per ogni colonna */
+  background: var(--rosso-scuro); /* Sfondo rosso per le colonne */
+  color: var(--bianco); /* Testo bianco */
+  border-radius: 15px; /* Smussa gli angoli delle colonne */
+  padding: 1.5rem; /* Spaziatura interna */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  display: flex;
+  flex-direction: column; /* Disposizione verticale del contenuto */
+  justify-content: space-between; /* Distribuisce il contenuto uniformemente */
+}
+
+.campo-colonna h2,
+.campo-colonna h3 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem; /* Aumenta la dimensione dei titoli */
+  font-weight: bold;
+}
+
+.campo-colonna p {
+  margin-bottom: 1rem;
+  line-height: 1.8; /* Migliora la leggibilità */
+  font-size: 1.2rem; /* Aumenta la dimensione del testo */
+}
+
+.istruttori {
+  margin-top: 1rem;
+}
+
+.istruttore {
+  margin-bottom: 1rem;
+}
+
+.cert-logo {
+  max-width: 250px; /* Rimpicciolisce il logo */
+  height: auto;
+  margin: 1rem auto; /* Centra il logo orizzontalmente */
+}
+
+.campo-colonna a {
+  color: var(--bianco); /* Link bianco */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem; /* Aumenta la dimensione del link */
+}
+
+.campo-colonna a:hover {
+  text-decoration: underline;
+}
+
+/* Contenitore principale della sezione contatti */
+.contatti-container {
+  display: flex;
+  flex-wrap: wrap; /* Permette il wrapping su dispositivi più piccoli */
+  gap: 2rem; /* Spaziatura tra le colonne */
+  justify-content: space-evenly; /* Distribuisce uniformemente le colonne */
+  align-items: center; /* Centra verticalmente il contenuto */
+  background: var(--rosso-scuro); /* Sfondo rosso scuro */
+  padding: 2rem; /* Spaziatura interna */
+  border-radius: 15px; /* Smussa gli angoli del contenitore */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  max-width: 1200px; /* Allinea la larghezza con i container sopra */
+  margin: 0 auto; /* Centra il contenitore orizzontalmente */
+}
+
+/* Colonna sinistra: Informazioni di contatto */
+.contatti-info {
+  flex: 1; /* Occupa lo spazio disponibile */
+  min-width: 300px; /* Larghezza minima */
+  max-width: 400px; /* Larghezza massima per evitare che si allarghi troppo */
+  color: var(--bianco); /* Colore del testo */
+  text-align: center; /* Centra il testo orizzontalmente */
+  display: flex;
+  flex-direction: column; /* Disposizione verticale del contenuto */
+  justify-content: center; /* Centra verticalmente il contenuto */
+  align-items: center; /* Centra orizzontalmente il contenuto */
+}
+
+.contatti-info h2 {
+  font-size: 2rem; /* Dimensione del titolo */
+  margin-bottom: 1rem;
+}
+
+.contatti-info p {
+  font-size: 1.2rem; /* Dimensione del testo */
+  margin-bottom: 0.5rem;
+  line-height: 1.6; /* Migliora la leggibilità */
+}
+
+.contatti-info a {
+  color: var(--rosso); /* Colore dei link */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contatti-info a:hover {
+  text-decoration: underline;
+}
+
+/* Colonna destra: Mappa di Google Maps */
+.contatti-mappa {
+  flex: 1; /* Occupa lo spazio disponibile */
+  min-width: 300px; /* Larghezza minima */
+  max-width: 400px; /* Larghezza massima per evitare che si allarghi troppo */
+  height: 300px; /* Altezza fissa per rendere la mappa quadrata */
+  display: flex;
+  align-items: center; /* Centra verticalmente la mappa */
+  justify-content: center; /* Centra orizzontalmente la mappa */
+}
+
+.contatti-mappa iframe {
+  width: 100%; /* Occupa tutta la larghezza disponibile */
+  height: 100%; /* Occupa tutta l'altezza disponibile */
+  border: 0; /* Rimuove il bordo */
+  border-radius: 15px; /* Smussa gli angoli della mappa */
+}
+
+/* Stile per gli header delle sezioni */
+section h2, section h3 {
+  color: var(--giallo); /* Colore giallo */
+  text-shadow: 2px 2px 0 var(--marrone), -2px -2px 0 var(--marrone),
+               -2px 2px 0 var(--marrone), 2px -2px 0 var(--marrone); /* Bordo nero */
+  font-weight: bold; /* Testo in grassetto */
+  text-align: center; /* Centra il testo */
+  margin-bottom: 1rem; /* Spaziatura sotto il titolo */
 }
 
 .scroll-down {
@@ -100,17 +259,61 @@ body {
 }
 
 .reveal {
+  transform: scale(0.8); /* Ridotto inizialmente */
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .reveal.visible {
+  transform: scale(1); /* Ritorna alla dimensione normale */
   opacity: 1;
-  transform: translateY(0);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+.reveal.closing {
+  transform: scale(0.8); /* Ridotto di nuovo */
+  opacity: 0;
+}
+
+.reveal.closing-down {
+  transform-origin: top; /* Comprime dall'alto verso il basso */
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.reveal.closing-up {
+  transform-origin: bottom; /* Comprime dal basso verso l'alto */
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Parte dal basso */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Arriva alla posizione originale */
+  }
+}
+
+.visible {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.closing {
+  transform: scaleY(0);
+  opacity: 0;
 }
