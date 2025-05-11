@@ -174,18 +174,34 @@ body {
   text-decoration: underline;
 }
 
+/* Stile globale per tutti i link */
+a {
+  color: var(--bianco); /* Colore del testo bianco */
+  text-decoration: underline; /* Sottolineatura sempre visibile */
+  font-weight: bold; /* Testo in grassetto */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transizione per colore e sfondo */
+}
+
+a:hover {
+  color: var(--rosso); /* Cambia il colore del testo in rosso */
+  background-color: var(--giallo); /* Aggiunge uno sfondo giallo */
+  text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
+  padding: 0.2rem 0.5rem; /* Aggiunge un po' di padding per evidenziare lo sfondo */
+  border-radius: 5px; /* Smussa gli angoli dello sfondo */
+}
+
 /* Contenitore principale della sezione contatti */
 .contatti-container {
   display: flex;
   flex-wrap: wrap; /* Permette il wrapping su dispositivi più piccoli */
   gap: 2rem; /* Spaziatura tra le colonne */
-  justify-content: space-evenly; /* Distribuisce uniformemente le colonne */
-  align-items: center; /* Centra verticalmente il contenuto */
+  justify-content: center; /* Centra le colonne orizzontalmente */
+  align-items: stretch; /* Allinea le colonne in altezza */
   background: var(--rosso-scuro); /* Sfondo rosso scuro */
-  padding: 2rem; /* Spaziatura interna */
+  padding: 3rem; /* Aumenta la spaziatura interna */
   border-radius: 15px; /* Smussa gli angoli del contenitore */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
-  max-width: 1200px; /* Allinea la larghezza con i container sopra */
+  max-width: 1200px; /* Larghezza massima */
   margin: 0 auto; /* Centra il contenitore orizzontalmente */
 }
 
@@ -193,7 +209,7 @@ body {
 .contatti-info {
   flex: 1; /* Occupa lo spazio disponibile */
   min-width: 300px; /* Larghezza minima */
-  max-width: 400px; /* Larghezza massima per evitare che si allarghi troppo */
+  max-width: 500px; /* Larghezza massima */
   color: var(--bianco); /* Colore del testo */
   text-align: center; /* Centra il testo orizzontalmente */
   display: flex;
@@ -214,7 +230,7 @@ body {
 }
 
 .contatti-info a {
-  color: var(--rosso); /* Colore dei link */
+  color: var(--bianco); /* Colore dei link */
   text-decoration: none;
   font-weight: bold;
 }
@@ -227,18 +243,80 @@ body {
 .contatti-mappa {
   flex: 1; /* Occupa lo spazio disponibile */
   min-width: 300px; /* Larghezza minima */
-  max-width: 400px; /* Larghezza massima per evitare che si allarghi troppo */
-  height: 300px; /* Altezza fissa per rendere la mappa quadrata */
+  max-width: 500px; /* Larghezza massima */
+  height: auto; /* Adatta l'altezza al contenitore */
   display: flex;
-  align-items: center; /* Centra verticalmente la mappa */
-  justify-content: center; /* Centra orizzontalmente la mappa */
+  flex-direction: column; /* Disposizione verticale */
+  align-items: center; /* Centra il contenuto orizzontalmente */
+  justify-content: center; /* Centra verticalmente il contenuto */
 }
 
 .contatti-mappa iframe {
   width: 100%; /* Occupa tutta la larghezza disponibile */
-  height: 100%; /* Occupa tutta l'altezza disponibile */
+  height: 100%; /* Occupa tutta l'altezza del contenitore */
   border: 0; /* Rimuove il bordo */
   border-radius: 15px; /* Smussa gli angoli della mappa */
+}
+
+/* Stile per la mini icona di Anconagility */
+.social-mini-icon {
+  width: 23px; /* Riduci ulteriormente la dimensione */
+  height: 23px; /* Mantieni proporzioni */
+  margin-right: 0.01rem; /* Riduci la spaziatura tra la mini icona e il testo */
+  vertical-align: middle; /* Allinea verticalmente la mini icona al testo */
+}
+
+/* Stile per i link social */
+.social-link {
+  display: inline-flex; /* Usa inline-flex per un layout compatto */
+  align-items: center; /* Allinea verticalmente icona e testo */
+  gap: 0.2rem; /* Spaziatura tra gli elementi */
+  color: var(--bianco); /* Colore del testo bianco */
+  text-decoration: underline; /* Sottolineatura sempre visibile */
+  font-weight: bold; /* Testo in grassetto */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transizione per colore e sfondo */
+}
+
+.social-link:hover {
+  color: var(--rosso); /* Cambia il colore del testo in rosso */
+  background-color: var(--giallo); /* Aggiunge uno sfondo giallo */
+  text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
+  padding: 0.2rem 0.5rem; /* Aggiunge un po' di padding per evidenziare lo sfondo */
+  border-radius: 5px; /* Smussa gli angoli dello sfondo */
+}
+
+/* Stile per le icone social */
+.social-icon {
+  width: 24px; /* Dimensione dell'icona */
+  height: 24px; /* Mantiene proporzioni */
+  border-radius: 50%; /* Rende l'icona circolare */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra leggera */
+}
+
+/* Stile per la descrizione sopra la mappa */
+.mappa-descrizione {
+  display: flex;
+  align-items: center; /* Allinea l'icona e il testo verticalmente */
+  gap: 0.5rem; /* Spaziatura tra l'icona e il testo */
+  margin-bottom: 1rem; /* Spaziatura sotto la descrizione */
+  text-align: center; /* Centra il testo */
+}
+
+.mappa-descrizione img.mappa-icona {
+  width: 32px; /* Aumenta la dimensione dell'icona */
+  height: 32px; /* Mantiene proporzioni */
+}
+
+.mappa-descrizione p {
+  font-style: italic; /* Testo in italic */
+  color: var(--bianco); /* Colore del testo */
+  font-size: 1.2rem; /* Aumenta la dimensione del testo */
+  margin: 0; /* Rimuove margini extra */
+}
+
+.mappa-descrizione img.mappa-icona {
+  width: 24px; /* Dimensione dell'icona */
+  height: 24px; /* Mantiene proporzioni */
 }
 
 /* Stile per gli header delle sezioni */
@@ -249,6 +327,111 @@ section h2, section h3 {
   font-weight: bold; /* Testo in grassetto */
   text-align: center; /* Centra il testo */
   margin-bottom: 1rem; /* Spaziatura sotto il titolo */
+}
+
+#google-reviews .recensione {
+  background: var(--bianco); /* Sfondo bianco per ogni recensione */
+  color: var(--rosso-scuro); /* Testo rosso scuro */
+  padding: 1.5rem; /* Spaziatura interna */
+  border-radius: 10px; /* Smussa gli angoli */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  max-width: 300px; /* Larghezza massima per ogni recensione */
+  text-align: left; /* Allinea il testo a sinistra */
+  margin-bottom: 1rem; /* Spaziatura tra le recensioni */
+}
+
+/* Contenitore per le recensioni */
+.recensioni-container {
+  background: var(--rosso-scuro); /* Sfondo rosso scuro */
+  color: var(--bianco); /* Testo bianco */
+  padding: 2rem; /* Spaziatura interna */
+  border-radius: 15px; /* Smussa gli angoli */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  margin: 2rem auto; /* Spaziatura esterna */
+  max-width: 1200px; /* Larghezza massima */
+  text-align: center; /* Centra il testo */
+}
+
+/* Contenitore per i feed social */
+.social-container {
+  background: var(--rosso-scuro); /* Sfondo rosso scuro */
+  color: var(--bianco); /* Testo bianco */
+  padding: 2rem; /* Spaziatura interna */
+  border-radius: 15px; /* Smussa gli angoli */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  margin: 2rem auto; /* Spaziatura esterna */
+  max-width: 1200px; /* Larghezza massima */
+  text-align: center; /* Centra il testo */
+  display: flex;
+  flex-direction: column; /* Disposizione verticale */
+  align-items: center; /* Centra il contenuto orizzontalmente */
+}
+
+/* Colonne dei feed social */
+.social-columns {
+  display: flex;
+  flex-wrap: wrap; /* Permette il wrapping su dispositivi più piccoli */
+  gap: 2rem; /* Spaziatura tra le colonne */
+  justify-content: center; /* Centra le colonne orizzontalmente */
+  align-items: center; /* Centra verticalmente le colonne */
+  width: 100%; /* Occupa tutta la larghezza del container */
+}
+
+.social-column {
+  flex: 1; /* Ogni colonna occupa lo stesso spazio */
+  min-width: 300px; /* Larghezza minima per ogni colonna */
+  max-width: 500px; /* Larghezza massima per ogni colonna */
+  background: var(--rosso-scuro); /* Sfondo rosso */
+  color: var(--bianco); /* Testo bianco */
+  border-radius: 15px; /* Smussa gli angoli */
+  padding: 1.5rem; /* Spaziatura interna */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  text-align: center; /* Centra il testo */
+}
+
+/* Titoli delle colonne */
+.social-column h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--giallo); /* Colore giallo per i titoli */
+  text-shadow: 2px 2px 0 var(--marrone), -2px -2px 0 var(--marrone),
+               -2px 2px 0 var(--marrone), 2px -2px 0 var(--marrone); /* Bordo nero */
+}
+
+/* Feed di Instagram e Facebook */
+.facebook-feed {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.facebook-feed iframe {
+  width: 100%; /* Adatta la larghezza al contenitore */
+  border-radius: 10px; /* Smussa gli angoli */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
+
+/* Feed di Instagram */
+.instagram-feed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%; /* Occupa tutta la larghezza del contenitore */
+  height: auto; /* Lascia che l'altezza si adatti al contenuto */
+  overflow: hidden; /* Evita contenuti fuoriusciti */
+}
+
+.instagram-feed iframe,
+.instagram-feed .elfsight-app {
+  width: 100%; /* Adatta la larghezza al contenitore */
+  height: auto; /* Mantiene proporzioni naturali */
+  border-radius: 10px; /* Smussa gli angoli */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
 }
 
 .scroll-down {
@@ -285,6 +468,7 @@ section h2, section h3 {
   transform: scaleY(0);
   opacity: 0;
 }
+
 
 @keyframes fadeInZoom {
   0% {
