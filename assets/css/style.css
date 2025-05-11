@@ -15,6 +15,17 @@
   font-style: normal;
 }
 
+/* Stile globale per i link */
+a {
+  color: var(--bianco); /* Colore del testo bianco */
+  text-decoration: underline; /* Sottolineatura sempre visibile */
+  font-weight: bold; /* Testo in grassetto */
+  padding: 0.2rem 0.5rem; /* Padding fisso */
+  border-radius: 5px; /* Smussa gli angoli */
+  box-sizing: border-box; /* Include il padding nel calcolo delle dimensioni */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transizione per colore e sfondo */
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -157,10 +168,31 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Stile per i loghi delle certificazioni */
+.cert-logos {
+  display: flex;
+  justify-content: center; /* Centra i loghi orizzontalmente */
+  align-items: center; /* Allinea i loghi verticalmente */
+  gap: 1rem; /* Spaziatura tra i loghi */
+  margin: 1rem 0; /* Spaziatura sopra e sotto i loghi */
+}
+
 .cert-logo {
-  max-width: 250px; /* Rimpicciolisce il logo */
-  height: auto;
-  margin: 1rem auto; /* Centra il logo orizzontalmente */
+  max-width: 230px; /* Dimensione massima per i loghi */
+  height: auto; /* Mantiene proporzioni */
+}
+
+.cert-logo-csen {
+  max-width: 230px; /* Dimensione uniforme per il logo CSEN */
+}
+
+.cert-logo-coni {
+  width: 230px;
+  height: auto; /* Dimensione uniforme per il logo CONI */
+  background-color: var(--bianco); /* Sfondo bianco */
+  border-radius: 10px; /* Angoli smussati */
+  padding: 0.5rem; /* Spaziatura interna */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
 }
 
 .campo-colonna a {
@@ -179,6 +211,9 @@ a {
   color: var(--bianco); /* Colore del testo bianco */
   text-decoration: underline; /* Sottolineatura sempre visibile */
   font-weight: bold; /* Testo in grassetto */
+  padding: 0.2rem 0.5rem; /* Padding fisso */
+  border-radius: 5px; /* Smussa gli angoli */
+  box-sizing: border-box; /* Include il padding nel calcolo delle dimensioni */
   transition: color 0.3s ease, background-color 0.3s ease; /* Transizione per colore e sfondo */
 }
 
@@ -186,8 +221,6 @@ a:hover {
   color: var(--rosso); /* Cambia il colore del testo in rosso */
   background-color: var(--giallo); /* Aggiunge uno sfondo giallo */
   text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
-  padding: 0.2rem 0.5rem; /* Aggiunge un po' di padding per evidenziare lo sfondo */
-  border-radius: 5px; /* Smussa gli angoli dello sfondo */
 }
 
 /* Contenitore principale della sezione contatti */
@@ -229,14 +262,21 @@ a:hover {
   line-height: 1.6; /* Migliora la leggibilità */
 }
 
+/* Stile per i link nella sezione contatti */
 .contatti-info a {
-  color: var(--bianco); /* Colore dei link */
-  text-decoration: none;
-  font-weight: bold;
+  color: var(--bianco); /* Colore del testo bianco */
+  text-decoration: underline; /* Sottolineatura sempre visibile */
+  font-weight: bold; /* Testo in grassetto */
+  padding: 0.2rem 0.5rem; /* Padding fisso */
+  border-radius: 5px; /* Smussa gli angoli */
+  box-sizing: border-box; /* Include il padding nel calcolo delle dimensioni */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transizione per colore e sfondo */
 }
 
 .contatti-info a:hover {
-  text-decoration: underline;
+  color: var(--rosso); /* Cambia il colore del testo in rosso */
+  background-color: var(--giallo); /* Aggiunge uno sfondo giallo */
+  text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
 }
 
 /* Colonna destra: Mappa di Google Maps */
@@ -414,7 +454,7 @@ section h2, section h3 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
 }
 
-/* Feed di Instagram */
+/* Contenitore del feed di Instagram */
 .instagram-feed {
   display: flex;
   flex-wrap: wrap;
@@ -424,17 +464,115 @@ section h2, section h3 {
   width: 100%; /* Occupa tutta la larghezza del contenitore */
   height: auto; /* Lascia che l'altezza si adatti al contenuto */
   overflow: hidden; /* Evita contenuti fuoriusciti */
+  position: relative; /* Assicura che gli elementi siano contenuti */
 }
 
+/* Elementi all'interno del feed di Instagram */
 .instagram-feed iframe,
 .instagram-feed .elfsight-app {
   width: 100%; /* Adatta la larghezza al contenitore */
   height: auto; /* Mantiene proporzioni naturali */
   border-radius: 10px; /* Smussa gli angoli */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+  overflow: hidden; /* Evita che i contenuti escano dai limiti */
+}
+
+/* Escludi i link all'interno del feed di Instagram */
+.instagram-feed a {
+  all: unset; /* Rimuove tutti gli stili applicati */
+  display: inline; /* Ripristina il comportamento predefinito */
+}
+
+/* Stile per il footer */
+.footer {
+  background: var(--rosso-scuro); /* Sfondo rosso scuro */
+  color: var(--bianco); /* Testo bianco */
+  padding: 2rem; /* Spaziatura interna */
+  border-top: 5px solid var(--giallo); /* Bordo superiore giallo */
+}
+
+/* Contenitore principale del footer */
+.footer-content {
+  display: flex;
+  flex-wrap: nowrap; /* Evita il wrapping degli elementi */
+  justify-content: space-between; /* Distribuisce gli elementi agli angoli */
+  align-items: center; /* Centra verticalmente gli elementi */
+  gap: 2rem; /* Spaziatura tra gli elementi */
+}
+
+/* Sezione dei loghi nel footer */
+.footer-logo {
+  display: flex;
+  align-items: center; /* Allinea verticalmente i loghi */
+  gap: 1rem; /* Spaziatura tra i loghi */
+  flex: 0 0 auto; /* Mantiene la dimensione dei loghi */
+}
+
+/* Sezione delle informazioni nel footer */
+.footer-info {
+  flex: 1; /* Occupa lo spazio disponibile */
+  text-align: center; /* Centra il testo */
+  margin-right: 200px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem; /* Spaziatura tra le icone */
+  justify-content: flex-end; /* Allinea i social a destra */
+  align-items: center; /* Centra verticalmente le icone */
+}
+
+.footer-social a {
+  display: flex; /* Usa Flexbox per mantenere l'allineamento */
+  align-items: center; /* Centra verticalmente l'immagine */
+  justify-content: center; /* Centra orizzontalmente l'immagine */
+  width: 40px; /* Larghezza fissa per il contenitore */
+  height: 40px; /* Altezza fissa per il contenitore */
+}
+
+/* Stile per i loghi nel footer */
+.footer-logo img {
+  height: 80px; /* Altezza uniforme per i loghi */
+  width: auto; /* Mantiene proporzioni */
+}
+
+.footer-logo-csen {
+  height: 60px; /* Altezza per il logo CSEN nel footer */
+}
+
+.footer-logo-coni {
+  height: 60px; /* Altezza per il logo CONI nel footer */
+  background-color: var(--bianco); /* Sfondo bianco */
+  border-radius: 10px; /* Angoli smussati */
+  padding: 0.5rem; /* Spaziatura interna */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
+
+.footer-social img {
+  width: 24px; /* Dimensione iniziale delle icone */
+  height: 24px; /* Mantiene proporzioni */
+  transition: transform 0.3s ease; /* Transizione per l'effetto hover */
+}
+
+.footer-social a:hover img {
+  transform: scale(1.2); /* Ingrandisce leggermente l'icona al passaggio del mouse */
+}
+
+/* Animazione di rimbalzo */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .scroll-down {
+  scale: 1.5;
   margin-top: 2rem;
   font-size: 2rem;
   animation: bounce 1.5s infinite;
