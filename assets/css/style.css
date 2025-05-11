@@ -71,9 +71,9 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  filter: drop-shadow(0 0 10px var(--marrone)) 
-         drop-shadow(0 0 10px var(--marrone))
-         drop-shadow(0 0 10px var(--marrone)); /* Crea un bordo uniforme usando drop-shadow */
+  filter: drop-shadow(0 0 4px var(--marrone)) 
+         drop-shadow(0 0 4px var(--marrone))
+         drop-shadow(0 0 4px var(--marrone)); /* Crea un bordo uniforme usando drop-shadow */
 }
 
 .logo-title img.logo-inline {
@@ -467,7 +467,7 @@ section h2, section h3 {
 .facebook-feed {
   display: flex;
   flex-wrap: wrap;
-  height: 600px;
+  height: 100%;
   width: 100%;
   gap: 1rem;
   justify-content: center;
@@ -487,7 +487,7 @@ section h2, section h3 {
   align-items: center;
   gap: 1rem;
   width: 100%; /* Occupa tutta la larghezza del contenitore */
-  height: 600px; /* Lascia che l'altezza si adatti al contenuto */
+  height: 100%; /* Lascia che l'altezza si adatti al contenuto */
   overflow: hidden; /* Evita contenuti fuoriusciti */
   position: relative; /* Assicura che gli elementi siano contenuti */
 }
@@ -496,7 +496,7 @@ section h2, section h3 {
 .instagram-feed iframe,
 .instagram-feed .elfsight-app {
   width: 100%; /* Adatta la larghezza al contenitore */
-  height: auto; /* Mantiene proporzioni naturali */
+  height: 100%; /* Mantiene proporzioni naturali */
   border-radius: 10px; /* Smussa gli angoli */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
   overflow: hidden; /* Evita che i contenuti escano dai limiti */
