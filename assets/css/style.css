@@ -639,3 +639,101 @@ section h2, section h3 {
   transform: scaleY(0);
   opacity: 0;
 }
+
+/* Media Query per dispositivi con larghezza massima di 768px */
+@media (max-width: 768px) {
+  /* Layout generale */
+  body {
+    font-size: 14px; /* Riduce leggermente la dimensione del testo */
+  }
+
+  /* Sezione Home */
+  .Home-content {
+    padding: 1rem;
+    margin-top: 200px; /* Riduce l'offset verso il basso */
+  }
+
+  .Home h1 {
+    font-size: 2rem; /* Riduce la dimensione del titolo */
+  }
+
+  .Home-content p {
+    font-size: 1rem; /* Riduce la dimensione del paragrafo */
+  }
+
+  /* Layout a due colonne */
+  .campo-container {
+    flex-direction: column; /* Disposizione verticale per le colonne */
+    gap: 1rem; /* Riduce la spaziatura tra le colonne */
+  }
+
+  .campo-colonna {
+    min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
+    padding: 1rem; /* Riduce la spaziatura interna */
+  }
+
+  /* Sezione contatti */
+  .contatti-container {
+    flex-direction: column; /* Disposizione verticale per le colonne */
+    gap: 1rem; /* Riduce la spaziatura tra le colonne */
+  }
+
+  .contatti-info,
+  .contatti-mappa {
+    min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
+    max-width: 100%; /* Rimuove il limite massimo */
+  }
+
+  /* Feed social */
+  .social-columns {
+    flex-direction: column; /* Disposizione verticale per i feed */
+    gap: 1rem; /* Riduce la spaziatura tra i feed */
+  }
+
+  .social-column {
+    min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
+    max-width: 100%; /* Rimuove il limite massimo */
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column; /* Disposizione verticale per il footer */
+    gap: 1rem; /* Riduce la spaziatura tra le sezioni */
+    text-align: center; /* Centra il testo */
+  }
+
+  .footer-logo {
+    justify-content: center; /* Centra i loghi */
+  }
+
+  .footer-social {
+    justify-content: center; /* Centra le icone social */
+  }
+}
+
+/* Media Query per dispositivi con larghezza massima di 480px */
+@media (max-width: 480px) {
+  /* Sezione Home */
+  .Home h1 {
+    font-size: 1.5rem; /* Riduce ulteriormente la dimensione del titolo */
+  }
+
+  .Home-content p {
+    font-size: 0.9rem; /* Riduce ulteriormente la dimensione del paragrafo */
+  }
+
+  /* Feed social */
+  .social-column h3 {
+    font-size: 1.2rem; /* Riduce la dimensione dei titoli */
+  }
+
+  /* Footer */
+  .footer-logo img {
+    height: 60px; /* Riduce la dimensione dei loghi */
+  }
+
+  .footer-social img {
+    width: 20px; /* Riduce la dimensione delle icone social */
+    height: 20px; /* Mantiene proporzioni */
+  }
+}
