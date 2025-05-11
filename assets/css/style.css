@@ -672,7 +672,7 @@ section h2, section h3 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  height: auto; /* Altezza fissa per desktop */
+  height: 600px; /* Altezza fissa per desktop */
   overflow: hidden;
   position: relative;
 }
@@ -683,7 +683,7 @@ section h2, section h3 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  height: 100%; /* Altezza fissa per desktop */
+  height: 600px; /* Altezza fissa per desktop */
   overflow: hidden;
   position: relative;
 }
