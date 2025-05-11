@@ -6,6 +6,7 @@
   --bianco: #ffffff;
   --bianco-sfondo: #bbbbbb;
   --overlay: rgba(0, 0, 0, 0.5);
+  --max-width: 100%; /* Valore predefinito */
 }
 
 @font-face {
@@ -639,102 +640,67 @@ section h2, section h3 {
   transform: scaleY(0);
   opacity: 0;
 }
-
-/* Media Query per dispositivi con larghezza massima di 768px */
-@media (max-width: 768px) {
-  /* Layout generale */
-  body {
-    font-size: 14px; /* Riduce leggermente la dimensione del testo */
-    padding: 0; /* Rimuove eventuali padding extra */
+ /* MODIFICHE PER MOBILE */
+@media (max-width: var(--max-width)) {
+  /* Correggi il layout delle colonne */
+  .campo-container, .contatti-container, .social-columns {
+    flex-direction: column; /* Disposizione verticale */
+    gap: 1rem; /* Riduci la spaziatura */
+    padding: 1rem; /* Riduci il padding */
+    overflow-x: hidden; /* Evita lo spazio vuoto a destra */
   }
 
-  /* Sezione Home */
-  .Home-content {
-    padding: 1rem;
-    margin-top: 150px; /* Riduce l'offset verso il basso */
-  }
-
-  .Home h1 {
-    font-size: 2rem; /* Riduce la dimensione del titolo */
-  }
-
-  .Home-content p {
-    font-size: 1rem; /* Riduce la dimensione del paragrafo */
-  }
-
-  /* Layout a due colonne */
-  .campo-container {
-    flex-direction: column; /* Disposizione verticale per le colonne */
-    gap: 1rem; /* Riduce la spaziatura tra le colonne */
-  }
-
-  .campo-colonna {
+  .campo-colonna, .contatti-info, .contatti-mappa, .social-column {
     min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
-    padding: 1rem; /* Riduce la spaziatura interna */
+    max-width: 100%; /* Rimuovi il limite massimo */
+    box-sizing: border-box; /* Assicura che padding e bordi siano inclusi */
   }
 
-  /* Sezione contatti */
-  .contatti-container {
-    flex-direction: column; /* Disposizione verticale per le colonne */
-    gap: 1rem; /* Riduce la spaziatura tra le colonne */
-  }
-
-  .contatti-info,
-  .contatti-mappa {
-    min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
-    max-width: 100%; /* Rimuove il limite massimo */
-  }
-
-  /* Feed social */
-  .social-columns {
-    flex-direction: column; /* Disposizione verticale per i feed */
-    gap: 1rem; /* Riduce la spaziatura tra i feed */
-  }
-
-  .social-column {
-    min-width: 100%; /* Ogni colonna occupa tutta la larghezza */
-    max-width: 100%; /* Rimuove il limite massimo */
-  }
-
-  /* Footer */
-  .footer-content {
-    flex-direction: column; /* Disposizione verticale per il footer */
-    gap: 1rem; /* Riduce la spaziatura tra le sezioni */
+  /* Ridimensiona il titolo */
+  .logo-title h1 {
+    font-size: 1.3rem; /* Riduci la dimensione del titolo */
+    gap: 0.3rem; /* Riduci la spaziatura tra gli elementi */
     text-align: center; /* Centra il testo */
   }
 
-  .footer-logo {
-    justify-content: center; /* Centra i loghi */
+  .logo-title img.logo-inline {
+    height: 35px; /* Riduci l'altezza del logo */
   }
 
-  .footer-social {
-    justify-content: center; /* Centra le icone social */
-  }
-}
-
-/* Media Query per dispositivi con larghezza massima di 480px */
-@media (max-width: 480px) {
-  /* Sezione Home */
-  .Home h1 {
-    font-size: 1.5rem; /* Riduce ulteriormente la dimensione del titolo */
+  /* Riduci il margine superiore della sezione Home */
+  .Home-content {
+    margin-top: 350px; /* Riduci ulteriormente l'offset verso il basso */
+    padding: 1rem; /* Riduci il padding */
   }
 
-  .Home-content p {
-    font-size: 0.9rem; /* Riduce ulteriormente la dimensione del paragrafo */
+  /* Correggi le immagini e i loghi */
+  .cert-logos img {
+    max-width: 100px; /* Riduci la dimensione dei loghi */
+    height: auto; /* Mantieni proporzioni */
   }
 
-  /* Feed social */
-  .social-column h3 {
-    font-size: 1.2rem; /* Riduce la dimensione dei titoli */
+  /* Ridimensiona iframe (es. Google Maps, Facebook feed) */
+  iframe {
+    width: 100%; /* Adatta alla larghezza del contenitore */
+    height: 200px; /* Altezza ridotta per mappe e feed */
   }
 
-  /* Footer */
-  .footer-logo img {
-    height: 60px; /* Riduce la dimensione dei loghi */
+  /* Riduci dimensioni del testo */
+  body {
+    font-size: 12px; /* Riduci ulteriormente la dimensione del testo */
   }
 
-  .footer-social img {
-    width: 20px; /* Riduce la dimensione delle icone social */
-    height: 20px; /* Mantiene proporzioni */
+  h1, h2, h3 {
+    font-size: 1.2rem; /* Riduci i titoli */
+  }
+
+  /* Footer: disposizione verticale */
+  .footer-content {
+    flex-direction: column; /* Disposizione verticale */
+    text-align: center; /* Centra il testo */
+  }
+
+  .footer-info {
+    margin-right: 0; /* Rimuovi margine extra */
   }
 }

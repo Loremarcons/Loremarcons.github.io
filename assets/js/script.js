@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".reveal");
-  const homeSection = document.querySelector("#home");
+  const root = document.documentElement; // Riferimento al root CSS
 
   // Funzione per gestire le animazioni basate sullo scroll
   const handleScroll = () => {
@@ -17,9 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // Funzione per aggiornare la variabile CSS con la larghezza dello schermo
+  const updateMaxWidth = () => {
+    const screenWidth = window.innerWidth;
+    root.style.setProperty("--max-width", `${screenWidth}px`);
+  };
+
   // Aggiungi l'evento di scroll
   window.addEventListener("scroll", handleScroll);
 
-  // Inizializza lo stato delle sezioni
+  // Aggiungi l'evento di resize per aggiornare la larghezza
+  window.addEventListener("resize", updateMaxWidth);
+
+  // Inizializza lo stato delle sezioni e la larghezza
   handleScroll();
+  updateMaxWidth();
 });
