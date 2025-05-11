@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".reveal");
-  const root = document.documentElement; // Riferimento al root CSS
+  const isMobile = window.innerWidth <= 768;
 
-  // Funzione per gestire le animazioni basate sullo scroll
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
+    const threshold = isMobile ? 0.9 : 0.8;
 
     sections.forEach((section) => {
       const sectionTop = section.getBoundingClientRect().top;
-
-      if (sectionTop < windowHeight * 0.8) {
+      
+      if (sectionTop < windowHeight * threshold) {
         section.classList.add("visible");
       } else {
         section.classList.remove("visible");
@@ -17,19 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Funzione per aggiornare la variabile CSS con la larghezza dello schermo
-  const updateMaxWidth = () => {
-    const screenWidth = window.innerWidth;
-    root.style.setProperty("--max-width", `${screenWidth}px`);
-  };
+  // Ottimizza lo scroll su mobile
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
 
-  // Aggiungi l'evento di scroll
-  window.addEventListener("scroll", handleScroll);
+  // Gestisci il resize della finestra
+  window.addEventListener("resize", () => {
+    isMobile = window.innerWidth <= 768;
+  });
 
-  // Aggiungi l'evento di resize per aggiornare la larghezza
-  window.addEventListener("resize", updateMaxWidth);
-
-  // Inizializza lo stato delle sezioni e la larghezza
   handleScroll();
-  updateMaxWidth();
 });
