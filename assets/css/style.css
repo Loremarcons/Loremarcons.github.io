@@ -129,7 +129,7 @@ body {
   flex-wrap: wrap; /* Permette il wrapping su dispositivi più piccoli */
   gap: 2rem; /* Spaziatura tra le colonne */
   justify-content: center; /* Centra le colonne orizzontalmente */
-  align-items: stretch; /* Allinea le colonne in alto */
+  align-items: stretch; /* Allinea le colonne in altezza */
   text-align: center; /* Centra il testo in entrambe le colonne */
   padding: 2rem; /* Spaziatura interna */
 }
@@ -645,12 +645,13 @@ section h2, section h3 {
   /* Layout generale */
   body {
     font-size: 14px; /* Riduce leggermente la dimensione del testo */
+    padding: 0; /* Rimuove eventuali padding extra */
   }
 
   /* Sezione Home */
   .Home-content {
     padding: 1rem;
-    margin-top: 200px; /* Riduce l'offset verso il basso */
+    margin-top: 150px; /* Riduce l'offset verso il basso */
   }
 
   .Home h1 {
