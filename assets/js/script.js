@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".reveal");
-  const isMobile = window.innerWidth <= 768;
+  let isMobile = window.innerWidth <= 768;
 
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
