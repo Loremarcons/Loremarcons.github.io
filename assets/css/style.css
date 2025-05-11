@@ -71,9 +71,9 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  filter: drop-shadow(0 0 4px var(--marrone)) 
-         drop-shadow(0 0 4px var(--marrone))
-         drop-shadow(0 0 4px var(--marrone)); /* Crea un bordo uniforme usando drop-shadow */
+  filter: drop-shadow(0 0 10px var(--marrone)) 
+         drop-shadow(0 0 10px var(--marrone))
+         drop-shadow(0 0 10px var(--marrone)); /* Crea un bordo uniforme usando drop-shadow */
 }
 
 .logo-title img.logo-inline {
