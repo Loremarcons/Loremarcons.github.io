@@ -878,7 +878,7 @@ section h2, section h3 {
 }
 
 /* Aggiusta ulteriormente per schermi molto piccoli */
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 380px) {
   .Home-content {
     margin-top: 150px; /* Riduci leggermente il margine per schermi molto piccoli */
   }
