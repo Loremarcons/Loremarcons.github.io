@@ -41,7 +41,7 @@ a {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url(".../images/grass.jpg") center center / cover fixed no-repeat !important;
+  background: url("../images/grass.jpg") center center / cover fixed no-repeat;
   overflow-x: hidden;
   width: 100%;
   padding: 0;
